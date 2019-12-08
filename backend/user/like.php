@@ -21,7 +21,7 @@ if($result = $mysqli->query($sql)){
         // Attempt insert query execution into likes
         $sql ="INSERT INTO likes (dog_id, user_id)  VALUES ('$user_id', '$dog_id')";
         if($mysqli->query($sql) === true){
-            echo "Records inserted into likes successfully.";
+            echo "Records inserted into likes successfully.\n";
         } else{
             echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
         }
@@ -29,7 +29,7 @@ if($result = $mysqli->query($sql)){
         // Attempt insert query execution into dog
         $sql ="UPDATE dog SET likes = likes + 1 WHERE id = '$dog_id'";
         if($mysqli->query($sql) === true){
-            echo "Records inserted into likes successfully.";
+            echo "Records inserted into dog successfully.";
         } else{
             echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
         }
