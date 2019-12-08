@@ -35,7 +35,7 @@ sobre las contribuciones.
 
 * **Johann Gordillo** - [JohannGordillo](https://github.com/JohannGordillo)
 
-* **Jhovan Gallardo** - [JhovanGallardo](https://github.com/jhovan)
+* **Jhovan Gallardo** - [jhovan](https://github.com/jhovan)
 
 ## Licencia 📄
 
