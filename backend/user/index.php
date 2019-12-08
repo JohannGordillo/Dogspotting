@@ -31,8 +31,6 @@ $api_key = $_GET['key'];
 
 $stmt = validate($api_key, $db_connection);
 
-$mysqli = new mysqli("localhost", "root", "", "dogspotting"); 
-
 if($stmt->rowCount() > 0){
     $query = "SELECT * FROM dogs";
 
