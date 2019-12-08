@@ -42,6 +42,7 @@ if($stmt->rowCount() > 0){
     $stmt->execute();
 
     while($row = $stmt->fetch()) {
+        // Imprimimos la información de cada perro.
         $info_arr = array(
             "id" => $row["id"],
             "name" => $row["name"],
