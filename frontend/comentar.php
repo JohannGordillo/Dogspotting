@@ -14,10 +14,12 @@
         echo  "<input type=\"hidden\" name=\"dog_id\" value='$dog_id'>";
    ?>
     <p>
-        <textarea name="texto" rows="10" cols="30"/>
+        <textarea name="texto" rows="10" cols="30"></textarea>
+    </p>
+    <p>
+    <label>Máximo 500 carácteres</label>
     </p>
     <input type="submit" value="Enviar comentario">
-    <label>Máximo 500 carácteres</label>
 </form>
 </body>
 </html>
