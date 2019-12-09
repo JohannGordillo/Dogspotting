@@ -1,14 +1,11 @@
 <?php
 require 'base.php';
 
-// Escape user inputs for security
-//Note: The mysqli_real_escape_string() function escapes special 
-//characters in a string and create a legal SQL string to provide security against SQL injection.
+// Obtenemos los valores GET
 $api_key = $mysqli->real_escape_string($_REQUEST['key']);
 $dog_id = $mysqli->real_escape_string($_REQUEST['dog_id']);
-$cero  = 0;
 
-// Attempt select query execution
+// Se define el query para recuperar al usuario de la llave
 $sql = "SELECT id FROM user WHERE api_key = '$api_key'";
 
 if($result = $mysqli->query($sql)){
@@ -18,7 +15,7 @@ if($result = $mysqli->query($sql)){
             $user_id = $row->id ;
         }
 
-        // Attempt insert query execution into likes
+        // Inserta un nuevo like en la tabla likes
         $sql ="INSERT INTO likes (dog_id, user_id)  VALUES ('$user_id', '$dog_id')";
         if($mysqli->query($sql) === true){
             echo "Records inserted into likes successfully.\n";
@@ -26,7 +23,7 @@ if($result = $mysqli->query($sql)){
             echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
         }
 
-        // Attempt insert query execution into dog
+        // Incrementa el contador de likes del perro 
         $sql ="UPDATE dog SET likes = likes + 1 WHERE id = '$dog_id'";
         if($mysqli->query($sql) === true){
             echo "Records inserted into dog successfully.";
