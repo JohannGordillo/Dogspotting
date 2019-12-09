@@ -1,4 +1,4 @@
-# Dogspotting. :dog:
+# Dogspotting :dog:
 
 API RESTful para proveer servicios utiles para una red social para visualización de perros.
 
