@@ -1,7 +1,7 @@
 <?php
 require 'base.php';
 
-// Obtenemos los valores GET
+// Se obtienen los valores GET
 $api_key = $mysqli->real_escape_string($_REQUEST['key']);
 $dog_id = $mysqli->real_escape_string($_REQUEST['dog_id']);
 
@@ -23,7 +23,7 @@ if($result = $mysqli->query($sql)){
             echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
         }
 
-        // Incrementa el contador de likes del perro 
+        // Incrementa el contador de likes del perro en la base de datos
         $sql ="UPDATE dog SET likes = likes + 1 WHERE id = '$dog_id'";
         if($mysqli->query($sql) === true){
             echo "Records inserted into dog successfully.";
