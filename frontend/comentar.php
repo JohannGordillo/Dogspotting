@@ -12,7 +12,11 @@
         $dog_id = $_GET["dog_id"];
         echo  "<input type=\"hidden\" name=\"api_key\" value='$api_key'>";
         echo  "<input type=\"hidden\" name=\"dog_id\" value='$dog_id'>";
-   ?>
+    ?>
+
+    <p>
+    <label>Introduce tu comentario aqui:</label>
+    </p>
     <p>
         <textarea name="texto" rows="10" cols="30"></textarea>
     </p>
