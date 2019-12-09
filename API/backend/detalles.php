@@ -80,16 +80,17 @@ if($stmt->rowCount() > 0){
         // Ejecutamos la petición.
         $stmt->execute();
 
+        $list = [];
+
         while($row = $stmt->fetch()) {
             $info_arr = array(
                 "fecha" => $row["date"],
                 "user_id" => $row["user_id"],      
                 "text" => $row["texto"]
             );
-    
-            print_r(json_encode($info_arr)); // Pasamos el array a json.
-            echo "<br>";                     // Salto de línea para el siguiente perro.
+            array_push($list, $info_arr);
         }
+        print_r(json_encode($list)); // Pasamos el array a json.
     }
     else {
         // En el caso que la ID del perro no exista.
