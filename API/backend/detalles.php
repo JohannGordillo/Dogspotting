@@ -18,6 +18,8 @@
 // Incluimos los archivos necesarios.
 include_once 'database.php';
 
+header('Content-Type: application/json');
+
 /**
  * Función auxiliar para verificar que la api key ingresada sea valida.
  */
@@ -50,28 +52,7 @@ $dog_id = $_GET['dog_id']; // Obtenemos ID del perro.
 $stmt = validate($api_key, $db_connection); // Prepared statement para validar la api key.
 
 if($stmt->rowCount() > 0){
-    // Petición.
-    $query = "SELECT * FROM dog" . " WHERE id='$dog_id'";
-
-    // Preparamos la petición.
-    $stmt = $db_connection->prepare($query);
-
-    // Ejecutamos la petición.
-    $stmt->execute();
-
     if($stmt->rowCount() > 0) {
-        $row = $stmt->fetch();
-
-        $info_arr = array(
-            "id" => $row["id"],
-            "name" => $row["name"],      
-            "imagen" => $row["image"], 
-            "likes" => $row["likes"]
-        );
-
-        print_r(json_encode($info_arr)); // Pasamos el array a json.
-        echo "<br>";                     // Salto de línea para el siguiente perro.
-
         $query = "SELECT * FROM comment WHERE dog_id='$dog_id'";
 
         // Preparamos la petición.
@@ -79,18 +60,38 @@ if($stmt->rowCount() > 0){
 
         // Ejecutamos la petición.
         $stmt->execute();
-
-        $list = [];
+        
+        $comentarios = [];
 
         while($row = $stmt->fetch()) {
-            $info_arr = array(
+            $user_comment = array(
                 "fecha" => $row["date"],
                 "user_id" => $row["user_id"],      
                 "text" => $row["texto"]
             );
-            array_push($list, $info_arr);
+            array_push($comentarios, $user_comment);
         }
-        print_r(json_encode($list)); // Pasamos el array a json.
+        
+        // Petición.
+        $query = "SELECT * FROM dog" . " WHERE id='$dog_id'";
+
+        // Preparamos la petición.
+        $stmt = $db_connection->prepare($query);
+
+        // Ejecutamos la petición.
+        $stmt->execute();
+        
+        $row = $stmt->fetch();
+
+        $info_arr = array(
+            "id" => $row["id"],
+            "name" => $row["name"],      
+            "imagen" => $row["image"], 
+            "likes" => $row["likes"],
+            "comentarios" => $comentarios
+        );
+
+        print_r(json_encode($info_arr)); 
     }
     else {
         // En el caso que la ID del perro no exista.
