@@ -12,6 +12,7 @@
 *
 * @author  Jhovan Gallardo
 * @author  Johann Gordillo
+* @author  Diana Nicolas
 * @license http://www.opensource.org/licenses/mit-license.html  MIT License
 */
 
