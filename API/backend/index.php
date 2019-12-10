@@ -53,7 +53,7 @@ $stmt = validate($api_key, $db_connection); // Prepared statement para validar l
 
 if($stmt->rowCount() > 0){
     // Petición.
-    $query = "SELECT * FROM dog ORDER BY RAND() LIMIT 20";
+    $query = "SELECT * FROM dog ORDER BY RAND() LIMIT 2000"; // Devolveremos 2000 perros.
 
     // Preparamos la petición.
     $stmt = $db_connection->prepare($query);
