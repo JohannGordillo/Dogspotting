@@ -44,6 +44,7 @@ sobre las contribuciones.
 * **Johann Gordillo** - [JohannGordillo](https://github.com/JohannGordillo)
 
 * **Jhovan Gallardo** - [jhovan](https://github.com/jhovan)
+* **Diana Nicolas**   - [nicolasdi](https://github.com/nicolasdi)
 
 ## Licencia 📄
 
