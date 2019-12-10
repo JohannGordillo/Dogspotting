@@ -1,6 +1,18 @@
 <?php
 
 /**
+* ARCHIVO USER.
+* Contiene la clase para modelar usuarios de la red social.
+*
+* PHP version 7.
+*
+* @author  Johann Gordillo
+* @author  Jhovan Gallardo
+* @license http://www.opensource.org/licenses/mit-license.html  MIT License
+*/
+
+
+/**
  * Clase para modelar usuarios.
  */
 class User{
@@ -16,6 +28,8 @@ class User{
     /**
      * Constructor para la clase.
      * @param $db_connection. La conexion a la base de datos.
+     * @param $user_name. El nombre de usuario.
+     * @param $password. La contraseña del usuario.
      */
     public function __construct($db_connection, $user_name, $password){
         $this->_connection = $db_connection;
@@ -86,7 +100,6 @@ class User{
      */
     public function login(){
         // Petición.
-        
         $query = "SELECT `id`, `name`, `password` FROM " . $this->_table_name . " WHERE
                     name='" . $this->_user_name . "' AND password='" . $this->_password .  "'";
 
