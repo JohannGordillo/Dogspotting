@@ -19,6 +19,8 @@
 // Incluimos los archivos necesarios.
 include_once 'database.php';
 
+header('Content-Type: application/json');
+
 /**
  * Función auxiliar para verificar que la api key ingresada sea valida.
  */
@@ -59,6 +61,8 @@ if($stmt->rowCount() > 0){
     // Ejecutamos la petición.
     $stmt->execute();
 
+    $perros = [];
+
     // Imprimimos los datos de los perros.
     while($row = $stmt->fetch()) {
         // Llenamos el arreglo con la información de los registros.
@@ -68,9 +72,9 @@ if($stmt->rowCount() > 0){
             "imagen" => $row["image"], 
             "likes" => $row["likes"]
         );
-        print_r(json_encode($info_arr)); // Pasamos el array a json.
-        echo "<br>";                     // Salto de línea para el siguiente perro.
+        array_push($perros, $info_arr);
     }
+    print_r(json_encode($perros));
 }
 else{
     // En el caso de que la llave no exista.
